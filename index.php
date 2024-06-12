@@ -4,7 +4,7 @@
 require_once './commons/env.php';
 require_once './commons/helper.php';
 require_once './commons/connect-db.php';
-require_once './commons/crud-db.php';
+require_once './commons/model.php';
 
 
 // Require file trong controllers và models

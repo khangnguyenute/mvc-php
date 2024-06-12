@@ -55,7 +55,7 @@ if (!function_exists('listAll')) {
     function listAll($tableName)
     {
         try {
-            $sql = "SELECT * FROM $tableName";
+            $sql = "SELECT * FROM $tableName ORDER BY id DESC";
 
             $stmt = $GLOBALS['conn']->prepare($sql);
 
@@ -122,5 +122,13 @@ if (!function_exists('delete')) {
         } catch (\Exception $e) {
             debug($e);
         }
+    }
+}
+
+if (!function_exists('e404')) {
+    function e404()
+    {
+        echo '404 - Not found';
+        die();
     }
 }
