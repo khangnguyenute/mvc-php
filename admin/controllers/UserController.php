@@ -33,6 +33,8 @@ function createUser()
 
 
     if (!empty($_POST)) {
+        header('Location: ' . BASE_URL_ADMIN . '?act=users');
+        exit();
         $data = [
             "name" => $_POST['name'] ?? null,
             "email" => $_POST['email'] ?? null,
@@ -40,7 +42,7 @@ function createUser()
             "type" => $_POST['type'] ?? null,
         ];
 
-        $errors = validateCreate($data);
+        $errors = validateUserCreate($data);
         if (!empty($errors)) {
             $_SESSION['errors'] = $errors;
             $_SESSION['data'] = $data;
@@ -59,7 +61,7 @@ function createUser()
     require_once PATH_VIEW_ADMIN . '/layouts/master.php';
 };
 
-function validateCreate($data)
+function validateUserCreate($data)
 {
     $errors = [];
 
@@ -112,13 +114,13 @@ function updateUserById($id)
 
     if (!empty($_POST)) {
         $data = [
-            "name" => $_POST['name'] ?? null,
-            "email" => $_POST['email'] ?? null,
-            "password" => $_POST['password'] ?? null,
-            "type" => $_POST['type'] ?? null,
+            "name" => $_POST['name'] ?? $user['name'],
+            "email" => $_POST['email'] ?? $user['email'],
+            "password" => $_POST['password'] ?? $user['password'],
+            "type" => $_POST['type'] ?? $user['type'],
         ];
 
-        $errors = validateUpdate($id, $data);
+        $errors = validateUserUpdate($id, $data);
         if (!empty($errors)) {
             $_SESSION['errors'] = $errors;
         } else {
@@ -133,7 +135,7 @@ function updateUserById($id)
     require_once PATH_VIEW_ADMIN . '/layouts/master.php';
 };
 
-function validateUpdate($id, $data)
+function validateUserUpdate($id, $data)
 {
     $errors = [];
 
