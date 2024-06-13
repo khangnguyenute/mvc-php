@@ -18,12 +18,34 @@ $act = $_GET['act'] ?? '/';
 
 match ($act) {
     '/' => dashboard(),
+
+    // User
     'users' => getAllUsers(),
     'user-detail' => getUserById($_GET['id']),
     'user-create' => createUser(),
     'user-update' => updateUserById($_GET['id']),
     'user-delete' => deleteUserById($_GET['id']),
-};
 
+    // Category
+    'categories' => getAllCategories(),
+    'category-detail' => getCategoryById($_GET['id']),
+    'category-create' => createCategory(),
+    'category-update' => updateCategoryById($_GET['id']),
+    'category-delete' => deleteCategoryById($_GET['id']),
+
+    // Tag
+    'tags' => getAllTags(),
+    'tag-detail' => getTagById($_GET['id']),
+    'tag-create' => createTag(),
+    'tag-update' => updateTagById($_GET['id']),
+    'tag-delete' => deleteTagById($_GET['id']),
+
+    // Author
+    'authors' => getAllAuthors(),
+    'author-detail' => getAuthorById($_GET['id']),
+    'author-create' => createAuthor(),
+    'author-update' => updateAuthorById($_GET['id']),
+    'author-delete' => deleteAuthorById($_GET['id']),
+};
 
 require_once '../commons/disconnect-db.php';
