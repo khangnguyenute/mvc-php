@@ -6,7 +6,7 @@ function getAllCategories()
     $view = 'categories/index';
     $style = 'datatable';
     $script = 'datatable';
-    $script2 = 'datatable';
+    $script2 = 'categories/script';
     $categories = listAll('categories');
 
     require_once PATH_VIEW_ADMIN . 'layouts/master.php';
@@ -114,7 +114,7 @@ function validateCategoryUpdate($id, $data)
 
 function deleteCategoryById($id)
 {
-    delete('categories', $id);
+    delete2('categories', $id);
     $_SESSION['success'] = "Thao tác thành công";
     header('Location: ' . BASE_URL_ADMIN . "?act=categories");
     exit();

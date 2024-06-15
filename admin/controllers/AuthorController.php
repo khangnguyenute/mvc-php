@@ -6,7 +6,7 @@ function getAllAuthors()
     $view = 'authors/index';
     $style = 'datatable';
     $script = 'datatable';
-    $script2 = 'datatable';
+    $script2 = 'authors/script';
     $authors = listAll('authors');
 
     require_once PATH_VIEW_ADMIN . 'layouts/master.php';
@@ -38,11 +38,12 @@ function createAuthor()
         ];
 
         $avatar = $data['avatar'];
+        $errors = validateCreateAuthor($data);
+
         if (!empty($avatar) && $avatar['size'] > 0) {
             $data['avatar'] = upload_file($avatar, 'uploads/authors/');
         }
 
-        $errors = validateCreateAuthor($data);
         if (!empty($errors)) {
             $_SESSION['errors'] = $errors;
             $_SESSION['data'] = $data;
@@ -102,7 +103,6 @@ function updateAuthorById($id)
             "name" => $_POST['name'] ?? $author['name'],
             "avatar" =>  $_FILES['avatar'] ??  $author['avatar']
         ];
-
 
         $errors = validateUpdateAuthor($id, $data);
         if (!empty($errors)) {
@@ -167,7 +167,7 @@ function deleteAuthorById($id)
         e404();
     }
 
-    delete('authors', $id);
+    delete2('authors', $id);
 
     if (
         !empty($author['avatar'])                       // Có giá trị cũ

@@ -24,7 +24,7 @@
                     <?php endforeach ?>
                 </table>
 
-                <a href="<?= BASE_URL_ADMIN ?>?act=categories" class="btn btn-danger">Back</a>
+                <a href="<?= BASE_URL_ADMIN ?>?act=tags" class="btn btn-danger">Back</a>
             </div>
         </div>
     </div>
