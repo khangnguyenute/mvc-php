@@ -32,3 +32,14 @@ if (!function_exists(('upload_file'))) {
         return null;
     }
 }
+
+if (!function_exists(('get_file_upload'))) {
+    function get_file_upload($field, $default = null)
+    {
+        if (isset($_FILES[$field]) && $_FILES[$field]['size'] > 0) {
+            return  $_FILES[$field];
+        }
+
+        return $default;
+    }
+}
