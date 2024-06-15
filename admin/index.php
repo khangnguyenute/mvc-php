@@ -26,6 +26,13 @@ match ($act) {
     'user-update' => updateUserById($_GET['id']),
     'user-delete' => deleteUserById($_GET['id']),
 
+    // Post
+    'posts' => getAllPosts(),
+    'post-detail' => getPostById($_GET['id']),
+    'post-create' => createPost(),
+    'post-update' => updatePostById($_GET['id']),
+    'post-delete' => deletePostById($_GET['id']),
+
     // Category
     'categories' => getAllCategories(),
     'category-detail' => getCategoryById($_GET['id']),

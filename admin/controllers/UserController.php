@@ -31,10 +31,7 @@ function createUser()
     $title = 'Create User';
     $view = 'users/create';
 
-
     if (!empty($_POST)) {
-        header('Location: ' . BASE_URL_ADMIN . '?act=users');
-        exit();
         $data = [
             "name" => $_POST['name'] ?? null,
             "email" => $_POST['email'] ?? null,
@@ -110,8 +107,6 @@ function updateUserById($id)
     $title = 'Update User: ' . $user['name'];
     $view = 'users/update';
 
-
-
     if (!empty($_POST)) {
         $data = [
             "name" => $_POST['name'] ?? $user['name'],
@@ -175,7 +170,7 @@ function validateUserUpdate($id, $data)
 
 function deleteUserById($id)
 {
-    delete('users', $id);
+    delete2('users', $id);
     $_SESSION['success'] = 'Thao tác thành công!';
 
     header('Location: ' . BASE_URL_ADMIN . '?act=users');

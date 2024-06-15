@@ -45,9 +45,11 @@
                                 <td><?= $user['id'] ?></td>
                                 <td><?= $user['name'] ?></td>
                                 <td><?= $user['email'] ?></td>
-                                <td><?= $user['type']
+                                <td>
+                                    <?= $user['type']
                                         ? ' <span class="badge badge-success">Admin</span>'
-                                        : '<span class="badge badge-warning">Member</span>' ?></td>
+                                        : '<span class="badge badge-warning">Member</span>' ?>
+                                </td>
                                 <td>
                                     <a href="<?= BASE_URL_ADMIN ?>?act=user-detail&id=<?= $user['id'] ?>" class="btn btn-info">Show</a>
                                     <a href="<?= BASE_URL_ADMIN ?>?act=user-update&id=<?= $user['id'] ?>" class="btn btn-warning">Update</a>

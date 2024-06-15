@@ -6,7 +6,7 @@ function getAllTags()
     $view = 'tags/index';
     $style = 'datatable';
     $script = 'datatable';
-    $script2 = 'datatable';
+    $script2 = 'tags/script';
     $tags = listAll('tags');
 
     require_once PATH_VIEW_ADMIN . 'layouts/master.php';
@@ -114,7 +114,7 @@ function validateUpdateTag($id, $data)
 
 function deleteTagById($id)
 {
-    delete('tags', $id);
+    delete2('tags', $id);
     $_SESSION['success'] = "Thao tác thành công";
     header('Location: ' . BASE_URL_ADMIN . "?act=tags");
     exit();
