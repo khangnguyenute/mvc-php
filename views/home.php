@@ -1,33 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
+<!-- ======= Hero Slider Section ======= -->
+<!-- End Hero Slider Section -->
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trang chủ</title>
-</head>
+<!-- ======= Post Grid Section ======= -->
+<section id="posts" class="posts">
+    <div class="container" data-aos="fade-up">
+        <div class="row g-5">
+            <div class="col-lg-4">
+                <div class="post-entry-1 lg">
+                    <a href="single-post.html"><img src="<?= BASE_URL . $postTopView['img_thumbnail'] ?>" alt="" class="img-fluid"></a>
+                    <div class="post-meta"><span class="date"><?= ucwords($postTopView['category_name']) ?></span> <span class="mx-1">&bullet;</span> <span><?= $postTopView['updated_at'] ?></span></div>
+                    <h2><a href="single-post.html"><?= $postTopView['title'] ?></a></h2>
+                    <p class="mb-4 d-block"><?= $postTopView['excerpt'] ?></p>
 
-<body>
-    <h1>Đây là trang chủ</h1>
-    <table>
-        <thead>
-            <td>Id</td>
-            <td>Name</td>
-            <td>Email</td>
-            <td>Action</td>
-        </thead>
-        <tbody>
-            <?php foreach ($users as $user) : ?>
-                <tr>
-                    <td><?= $user['id'] ?></td>
-                    <td><?= $user['name'] ?></td>
-                    <td><?= $user['email'] ?></td>
-                    <td><a href="<?= BASE_URL . '?act=user-detail&id=' . $user['id'] ?>">Xem chi tiết</a></td>
-                </tr>
-            <?php endforeach ?>
-        </tbody>
-    </table>
+                    <div class="d-flex align-items-center author">
+                        <div class="photo"><img src="<?= BASE_URL . $postTopView['author_avatar'] ?>" alt="" class="img-fluid"></div>
+                        <div class="name">
+                            <h3 class="m-0 p-0"><?= $postTopView['author_name'] ?></h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-</body>
+            <div class="col-lg-8">
+                <div class="row g-5">
+                    <?php foreach ($postTop6Latest as $postColumn) : ?>
+                        <div class="col-lg-4 border-start custom-border">
+                            <?php foreach ($postColumn as $post) : ?>
+                                <div class="post-entry-1">
+                                    <a href="single-post.html"><img src="<?= BASE_URL . $post['img_thumbnail'] ?>" alt="" class="img-fluid"></a>
+                                    <div class="post-meta"><span class="date"><?= ucwords($post['category_name']) ?></span> <span class="mx-1">&bullet;</span> <span><?= $post['updated_at'] ?></span></div>
+                                    <h2><a href="single-post.html"><?= $post['title'] ?></a></h2>
+                                </div>
+                            <?php endforeach ?>
+                        </div>
+                    <?php endforeach ?>
 
-</html>
+                    <!-- Trending Section -->
+                    <div class="col-lg-4">
+                        <div class="trending">
+                            <h3>Trending</h3>
+                            <ul class="trending-post">
+                                <?php foreach ($postTop5Trending as $key => $post) : ?>
+                                    <li>
+                                        <a href="single-post.html">
+                                            <span class="number"><?= ++$key ?></span>
+                                            <h3><?= $post['title'] ?></h3>
+                                            <span class="author"><?= $post['author_name'] ?></span>
+                                        </a>
+                                    </li>
+                                <?php endforeach ?>
+                            </ul>
+                        </div>
+                    </div> <!-- End Trending Section -->
+                </div>
+            </div>
+
+        </div> <!-- End .row -->
+    </div>
+</section>
+<!-- End Post Grid Section -->

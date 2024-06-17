@@ -241,8 +241,8 @@ function validatePost($data)
     // Title
     if (empty($data['title'])) {
         $errors[] = "Title must be required";
-    } else if (strlen($data['title']) > 50) {
-        $errors[] = 'Title maximum 50 characters';
+    } else if (strlen($data['title']) > 100) {
+        $errors[] = 'Title maximum 100 characters';
     }
 
     // Excerpt
