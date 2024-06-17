@@ -11,7 +11,7 @@ require_once './commons/model.php';
 require_file(PATH_CONTROLLER);
 require_file(PATH_MODEL);
 
-delete('users', 8);
+delete2('users', 8);
 
 // Điều hướng
 $act = $_GET['act'] ?? '/';
