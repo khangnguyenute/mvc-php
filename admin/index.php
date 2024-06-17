@@ -16,8 +16,15 @@ require_file(PATH_MODEL_ADMIN);
 // Điều hướng
 $act = $_GET['act'] ?? '/';
 
+// Kiểm tra user đã đăng nhập chưa
+middleware_auth_check($act);
+
 match ($act) {
     '/' => dashboard(),
+
+    // Auth
+    'login' => showFormLogin(),
+    'logout' => logout(),
 
     // User
     'users' => getAllUsers(),
@@ -53,6 +60,10 @@ match ($act) {
     'author-create' => createAuthor(),
     'author-update' => updateAuthorById($_GET['id']),
     'author-delete' => deleteAuthorById($_GET['id']),
+
+    // Author
+    'setting-form' => settingShowForm(),
+    'setting-save' => settingSave(),
 };
 
 require_once '../commons/disconnect-db.php';

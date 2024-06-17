@@ -88,7 +88,13 @@
         </div>
     </li>
 
-
     <!-- Divider -->
     <hr class="sidebar-divider">
+
+    <li class="nav-item">
+        <a class="nav-link" href="<?= BASE_URL_ADMIN ?>?act=setting-form">
+            <i class="fas fa-fw fa-user"></i>
+            <span>Settings</span>
+        </a>
+    </li>
 </ul>
