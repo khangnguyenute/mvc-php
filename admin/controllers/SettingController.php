@@ -33,6 +33,11 @@ function settingSave()
 
     $_SESSION['success'] = "Thao tác thành công";
 
+    $fileSetting = PATH_UPLOAD . 'uploads/settings.json';
+    if (file_exists($fileSetting)) {
+        unlink($fileSetting);
+    }
+
     header('Location: ' . BASE_URL_ADMIN . '?act=setting-form');
     exit();
 };
