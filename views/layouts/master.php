@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>title</title>
+    <title><?= $GLOBALS['settings']['name'] ?? null ?></title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -39,6 +39,8 @@
 </head>
 
 <body>
+
+    <?php $categories = listAll('categories') ?>
 
     <!-- ======= Header ======= -->
     <?= require_once PATH_VIEW . "layouts/partials/header.php" ?>

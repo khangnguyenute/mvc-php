@@ -58,3 +58,22 @@ if (!function_exists('middleware_auth_check')) {
         }
     }
 }
+
+if (!function_exists('get_settings')) {
+    function get_settings()
+    {
+        $fileSetting = PATH_UPLOAD . 'uploads/settings.json';
+        if (file_exists($fileSetting)) {
+            $data = json_decode(file_get_contents($fileSetting), true);
+        } else {
+            $settings = listAll('settings');
+
+            $keys = array_column($settings, 'key');
+            $values = array_column($settings, 'value');
+
+            $data = array_combine($keys, $values);
+            file_put_contents(PATH_UPLOAD . 'uploads/settings.json', json_encode($data, JSON_PRETTY_PRINT));
+        }
+        return $data;
+    }
+}

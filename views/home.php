@@ -7,9 +7,9 @@
         <div class="row g-5">
             <div class="col-lg-4">
                 <div class="post-entry-1 lg">
-                    <a href="single-post.html"><img src="<?= BASE_URL . $postTopView['img_thumbnail'] ?>" alt="" class="img-fluid"></a>
+                    <a href="<?= BASE_URL ?>?act=post&id=<?= $postTopView['id'] ?>"><img src="<?= BASE_URL . $postTopView['img_thumbnail'] ?>" alt="" class="img-fluid"></a>
                     <div class="post-meta"><span class="date"><?= ucwords($postTopView['category_name']) ?></span> <span class="mx-1">&bullet;</span> <span><?= $postTopView['updated_at'] ?></span></div>
-                    <h2><a href="single-post.html"><?= $postTopView['title'] ?></a></h2>
+                    <h2><a href="<?= BASE_URL ?>?act=post&id=<?= $postTopView['id'] ?>"><?= $postTopView['title'] ?></a></h2>
                     <p class="mb-4 d-block"><?= $postTopView['excerpt'] ?></p>
 
                     <div class="d-flex align-items-center author">
@@ -27,9 +27,9 @@
                         <div class="col-lg-4 border-start custom-border">
                             <?php foreach ($postColumn as $post) : ?>
                                 <div class="post-entry-1">
-                                    <a href="single-post.html"><img src="<?= BASE_URL . $post['img_thumbnail'] ?>" alt="" class="img-fluid"></a>
+                                    <a href="<?= BASE_URL ?>?act=post&id=<?= $post['id'] ?>"><img src="<?= BASE_URL . $post['img_thumbnail'] ?>" alt="" class="img-fluid"></a>
                                     <div class="post-meta"><span class="date"><?= ucwords($post['category_name']) ?></span> <span class="mx-1">&bullet;</span> <span><?= $post['updated_at'] ?></span></div>
-                                    <h2><a href="single-post.html"><?= $post['title'] ?></a></h2>
+                                    <h2><a href="<?= BASE_URL ?>?act=post&id=<?= $post['id'] ?>"><?= $post['title'] ?></a></h2>
                                 </div>
                             <?php endforeach ?>
                         </div>
@@ -42,7 +42,7 @@
                             <ul class="trending-post">
                                 <?php foreach ($postTop5Trending as $key => $post) : ?>
                                     <li>
-                                        <a href="single-post.html">
+                                        <a href="<?= BASE_URL ?>?act=post&id=<?= $post['id'] ?>">
                                             <span class="number"><?= ++$key ?></span>
                                             <h3><?= $post['title'] ?></h3>
                                             <span class="author"><?= $post['author_name'] ?></span>
